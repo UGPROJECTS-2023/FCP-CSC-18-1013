@@ -1,0 +1,69 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h4 class="page-title">All Books Purchased</h4>
+  </div>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="d-flex align-items-center">
+          <h4 class="card-title">All Books Purchased</h4>
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- Modal -->
+
+        <div class="table-responsive">
+          <% if (result != "") { %>
+          <table id="add-row" class="display table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Sn</th>
+                <th>Title</th>
+                <th>Catalogue</th>
+                <th>Author</th>
+                <th>Reference</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Purchased By</th>
+                <th>Date Purchase</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% result.forEach((pur, index) => {%>
+                <tr key=<%= index %>>
+                <td><%=++index %></td>
+                <td><%=pur.bookId.title %></td>
+                <td><%=pur.bookId.catalogue %></td>
+                <td><%=pur.bookId.author %></td>
+                <td><%=pur.reference %></td>
+                <td><%=pur.price %></td>
+                <td><%=pur.status %></td>
+                <td><%=pur.userId.name %></td>
+                <td><%=pur.createdAt %></td>
+              </tr>
+              <%})%>
+            </tbody>
+          </table>
+          <% } else { %>
+          <h1 class="text-warning">No Purchase found</h1>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#add-row').DataTable({
+      order: [0, 'asc'],
+      columnDefs: [
+        {
+          targets: [0, 1, 2, 3,4,5],
+          searchable: true,
+          orderable: true,
+        },
+      ],
+    });
+  });
+</script>

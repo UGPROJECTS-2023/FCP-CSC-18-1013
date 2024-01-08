@@ -1,0 +1,84 @@
+<div class="page-inner">
+    <div class="page-header">
+      <h4 class="page-title">All Payments</h4>
+    </div>
+  
+    <% if (message) { %>
+     <div class="alert  alert-dismissible fade show" alert-<%= message.type %> role="alert">
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+       
+      </button>
+      <strong><%= message.message %> </strong>
+     </div>
+    <% } %>
+    <div class="col-md-12">
+      <div class="card px-5 my-3">
+        <div class="card-header">
+          <div class="d-flex align-items-center">
+            <h4 class="card-title">All Payments</h4>
+           
+          </div>
+        </div>
+      
+  
+        <div class="table-responsive">
+            <% if (result.length > 0) { %>
+              <table id="add-row" class="display table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Sn</th>
+                    <th>Payment Reference</th>
+                    <th>Payment Amount</th>
+                    <th>Payment Status</th>
+                    <th>Book Title</th>
+                    <th>Book Catalogue</th>
+                    <th>Book Author</th>
+                    <th>Service Type</th>
+                    <th>Date Added</th>
+                    <!-- Add other table headers as needed -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <% result.forEach((payment, index) => { %>
+                    <tr key=<%= index %>>
+                        <td><%=++index%></td>
+                      <td><%= payment.reference %></td>
+                      <td><%= payment.price %></td>
+                      <td><%= payment.status %></td>
+                      <td><%= payment.bookId.title %></td>
+                      <td><%= payment.bookId.catalogue %></td>
+                      <td><%= payment.bookId.author %></td>
+                      <td><%= payment.serviceType %></td>
+                      <td><%= payment.createdAt %></td>
+                      <!-- Add other table data cells based on your requirements -->
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            <% } else { %>
+              <h1 class="text-warning">No Payments found</h1>
+            <% } %>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('#add-row').DataTable({
+        order: [0, 'asc'],
+        columnDefs: [
+          {
+            targets: [0, 1, 2, 3,4,5,6,7], 
+            searchable: true,
+            orderable: true,
+          },
+        ],
+      });
+    });
+  </script>
+  
+  
+  

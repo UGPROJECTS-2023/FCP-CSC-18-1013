@@ -1,0 +1,96 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h4 class="page-title">All Catalogue</h4>
+  </div>
+  <% if (message) { %>
+  <div class="alert alert-dismissible fade show" alert-<%="message.type" %>
+    role="alert">
+    <button
+      type="button"
+      class="btn-close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong><%= message.message %> </strong>
+  </div>
+  <% } %>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="d-flex align-items-center">
+          <h4 class="card-title">All Catalogue</h4>
+          
+          <button
+            class="btn btn-warning btn-round ml-auto"><a class="text-light" href="/add-catalogue">
+            <i class="fa fa-plus"></i>
+            Create Catalogue  </a>
+          </button>
+        
+        </div>
+      </div>
+      <div class="card-body">
+        
+        <div class="table-responsive">
+            <% if (result != "") { %>
+          <table id="add-row" class="display table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Sn</th>
+                <th>Catalogue Name</th>
+                <th>Catalogue Description</th>
+
+                <th style="width: 10%">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% result.forEach((cat, index) => { %>
+              <tr key=<%= index %>>
+                <td><%= ++index %></td>
+                <td><%=cat.name%></td>
+                <td><%=cat.description%></td>
+
+                <td>
+                  <div class="form-button-action">
+                    
+                   <button
+                      type="button"
+                      data-toggle="tooltip"
+                      title=""
+                      class="btn btn-link btn-danger"
+                      data-original-title="Remove User"
+                    >
+                      <a href="/catalogue/delete/<%= cat._id %>">
+                        <i class="fa fa-times text-danger"></i
+                      ></a>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <%})%>
+            </tbody>
+          </table>
+            <% } else { %>
+          <h1 class="text-warning">No Catalogue found</h1>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#add-row').DataTable({
+      order: [0, 'asc'],
+      columnDefs: [
+        {
+          targets: [0, 1, 2, 3], // Column indexes for reference, status, title (0-based index)
+          searchable: true,
+          orderable: true,
+        },
+      ],
+    });
+  });
+</script>

@@ -1,0 +1,129 @@
+
+  <div class="confirm error text-danger text-center text-xl>
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-12"></div>
+      <div class="col-lg-4 col-md-12">
+        <div class="card my-5">
+          <div class="card-header bg-warning">
+            <h3 class="text-light text-center">Edit Book</h3>
+          </div>
+          <div class="card-body py-5 px-3">
+            <form action="/book/update/<%= result._id %>" method="post" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-12 my-2">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="title"
+                      value="<%= result.title %>"
+                      placeholder="Book Title"
+                      class="form-control"
+                    />
+                    <div class="name error"></div>
+                  </div>
+                </div>
+                <div class="col-12 my-2">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="author"
+                      value="<%= result.author %>"
+                      placeholder="Book Author"
+                      class="form-control"
+                    />
+                    <div class="name error"></div>
+                  </div>
+                </div>
+                <div class="col-12 my-2">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="price"
+                      placeholder="Book Price"
+                      value="<%= result.price %>"
+                      class="form-control"
+
+                       
+                    />
+                    <div class="name error"></div>
+                  </div>
+                </div>
+                <div class="col-12 my-2">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="isbn"
+                      value="<%= result.isbn %>"
+                      placeholder="Book ISBN No"
+                      class="form-control"
+                    />
+                    <div class="name error"></div>
+                  </div>
+                </div>
+                  <div class="col-12 my-2">
+                  <div class="form-group">
+                    <input
+                      type="file"
+                      name="dp"
+                      class="form-control"
+                    />
+                    <div class="name error"></div>
+                  </div>
+                    <div class="col-12 my-2">
+                  <img src="/<%= result.dp %> " class="img-thumbnail mt-1" alt="/" srcset="">
+                </div>
+                <input type="hidden" name="old_image" value="<%= result.dp %>" />
+                <div class="col-12 my-2">
+                   <div class="form-group">
+                           
+                            <select
+                              name="catalogue"
+                            
+                              class="form-control w-100"
+                              id="exampleFormControlSelect1"
+                            >
+                           <option     value="<%= result.catalogue%>"><%= result.catalogue %></option>
+                                    
+                          </select>
+                            <div class="catalogue error"></div>
+                          </div>
+                </div>
+               
+                <div class="col-12 my-2">
+                  <div class="form-group">
+                    <label class="text-dark" for="comment">Catalogue Description</label>
+
+                    <textarea
+                      name="description"
+                      value="<%= result.description %>"
+                      class="form-control"
+                      colums="15"
+                      id="comment"
+                      placeholder="<%= result.description %>"
+                      rows="5"
+                    >
+                    </textarea>
+
+                    <div class="description error"></div>
+                  </div>
+                </div>
+                <div class="col-12 my-2">
+                  <div class="form-group">
+                    <input
+                      type="submit"
+                      value="Update Book"
+                      class="btn btn-warning text-light w-100"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12"></div>
+    </div>
+  </div>
+

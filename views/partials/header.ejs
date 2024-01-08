@@ -1,0 +1,80 @@
+<header class="header">
+  <div class="header__top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <div class="header__top__left">
+            <ul></ul>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="header__top__right">
+            <div class="header__top__right__language"></div>
+            <div class="header__top__right__auth">
+              <a href="/login"><i class="fa fa-user"></i> Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="header__logo">
+          <h4><a class="tom" href="/">Garo Bookshop</a></h4>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <nav class="header__menu">
+          <ul>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li>
+              <a href="#">Books</a>
+              <ul class="header__menu__dropdown">
+                <% data.forEach((cata, index) => {%>
+                <li>
+                  <a href="/title/<%= cata._id%>"><%= cata.name %></a>
+                </li>
+                <%})%>
+              </ul>
+            </li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/faq">Faq</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-3">
+        <div class="header__cart">
+          <ul>
+            <% if (user) { %>
+            <li class="text-warning">
+              <a class="hoverm" href="/dashboard"><%= user.name %></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-shopping-cart text-warning"></i> </a>
+            </li>
+            <li>
+              <a href="/logout">
+                <i class="fas fa-sign-out-alt text-warning"></i>
+                <p>Logout</p>
+              </a>
+            </li>
+            <%} else {%>
+            <li>
+              <a href="/login"
+                ><i class="fa fa-shopping-cart text-warning"></i
+              ></a>
+            </li>
+            <%}%>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="humberger__open">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</header>
